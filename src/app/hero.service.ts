@@ -17,4 +17,11 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
+
+  getHero(id: number): Observable<Hero> {
+    // tslint:disable-next-line:no-non-null-assertion
+    const foundHero = HEROES.find(hero => hero.id === id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(foundHero);
+  }
 }
